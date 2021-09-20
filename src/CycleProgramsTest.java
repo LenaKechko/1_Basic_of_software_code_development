@@ -1,14 +1,9 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.math.BigInteger;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.Assert.*;
 
 public class CycleProgramsTest {
     private CyclePrograms cycleTest;
@@ -78,18 +73,71 @@ public class CycleProgramsTest {
     }
 
     @Test
-    public void fifthTask() {
+    public void fifthTaskOne() {
+        Assert.assertEquals(3.194, cycleTest.fifthTask(2, 0), 0.001);
     }
 
     @Test
-    public void sixthTask() {
+    public void fifthTaskTwo() {
+        Assert.assertEquals(2.0, cycleTest.fifthTask(10, 1), 0.001);
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void fifthTaskFail() {
+        cycleTest.fifthTask(-1, 1);
     }
 
     @Test
-    public void seventhTask() {
+    public void sixthTaskOne() {
+        Assert.assertArrayEquals(new int[]{102, 104, 106, 102, 106}, cycleTest.sixthTask("fhjfj"));
     }
 
     @Test
-    public void eighthTask() {
+    public void sixthTaskTwo() {
+        Assert.assertArrayEquals(new int[]{48, 53, 49}, cycleTest.sixthTask("051"));
+    }
+
+    @Test
+    public void sixthTaskThree() {
+        Assert.assertArrayEquals(new int[]{255}, cycleTest.sixthTask(""));
+    }
+
+    @Test
+    public void seventhTaskOne() throws Exception {
+        HashMap<Integer, List<Integer>> actualResult = new HashMap<>(
+                Map.of(4, new ArrayList<>(Arrays.asList(2)), 5, new ArrayList<>(Arrays.asList()), 6, new ArrayList<Integer>(Arrays.asList(2, 3))));
+        Assert.assertTrue(cycleTest.seventhTask(4, 6).equals(actualResult));
+    }
+
+    @Test
+    public void seventhTaskTwo() throws Exception {
+        HashMap<Integer, List<Integer>> actualResult = new HashMap<>(
+                Map.of(1, new ArrayList<>(Arrays.asList()), 2, new ArrayList<>(Arrays.asList()), 3, new ArrayList<Integer>(Arrays.asList()), 4, new ArrayList<>(Arrays.asList(2)), 5, new ArrayList<>(Arrays.asList()), 6, new ArrayList<Integer>(Arrays.asList(2, 3)), 7, new ArrayList<>(Arrays.asList()), 8, new ArrayList<>(Arrays.asList(2, 4)), 9, new ArrayList<Integer>(Arrays.asList(3)), 10, new ArrayList<Integer>(Arrays.asList(2, 5))));
+        Assert.assertTrue(cycleTest.seventhTask(1, 10).equals(actualResult));
+    }
+
+    @Test(expected = Exception.class)
+    public void seventhTaskFail() throws Exception {
+       cycleTest.seventhTask(10, 1);
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void seventhTaskNegativeNumber() throws Exception {
+        cycleTest.seventhTask(-10, 1);
+    }
+
+    @Test
+    public void eighthTaskFirstTest() {
+        Assert.assertEquals("05", cycleTest.eighthTask(40.5, 80.5));
+    }
+
+    @Test
+    public void eighthTaskSecondTest() {
+        Assert.assertEquals("", cycleTest.eighthTask(41.6, 80.5));
+    }
+
+    @Test
+    public void eighthTaskIntStartData() {
+        Assert.assertEquals("176", cycleTest.eighthTask(41756, 81276));
     }
 }
