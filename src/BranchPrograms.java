@@ -9,14 +9,13 @@ public class BranchPrograms {
             return isNotCorrect;
         }
         int threeCorner = 180 - (firstCorner + secondCorner);
-        if (threeCorner > 0) {
-            if (firstCorner == 90 || secondCorner == 90 || threeCorner == 90) {
-                return isExistRectangular;
-            } else {
-                return isExistNotRectangular;
-            }
-        } else {
+        if (threeCorner <= 0) {
             return isNotExist;
+        }
+        if (firstCorner == 90 || secondCorner == 90 || threeCorner == 90) {
+            return isExistRectangular;
+        } else {
+            return isExistNotRectangular;
         }
     }
 

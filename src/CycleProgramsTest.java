@@ -105,7 +105,7 @@ public class CycleProgramsTest {
     @Test
     public void seventhTaskOne() throws Exception {
         HashMap<Integer, List<Integer>> actualResult = new HashMap<>(
-                Map.of(4, new ArrayList<>(Arrays.asList(2)), 5, new ArrayList<>(Arrays.asList()), 6, new ArrayList<Integer>(Arrays.asList(2, 3))));
+                Map.of(4, Arrays.asList(2), 5, new ArrayList<>(), 6, Arrays.asList(2, 3)));
         Assert.assertTrue(cycleTest.seventhTask(4, 6).equals(actualResult));
     }
 

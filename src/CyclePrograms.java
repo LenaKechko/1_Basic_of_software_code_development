@@ -92,16 +92,15 @@ public class CyclePrograms {
             throw new ArrayIndexOutOfBoundsException();
         }
         HashMap<Integer, List<Integer>> result = new HashMap<>();
-        List<Integer> divisor = new ArrayList<>();
+
         for (int i = m; i <= n; i++) {
-            divisor.clear();
+            List<Integer> divisor = new ArrayList<>();
             for (int j = 2; j < i; j++) {
                 if (i % j == 0) {
                     divisor.add(j);
                 }
             }
-            List<Integer> tempList = new ArrayList<>(divisor);
-            result.put(i, tempList);
+            result.put(i, divisor);
         }
         return result;
     }
